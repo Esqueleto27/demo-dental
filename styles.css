@@ -1,0 +1,74 @@
+/* Dental Smile — estilos personalizados (lo que Tailwind CDN no cubre) */
+
+:root {
+  --ink: #0B1F3A;
+  --ink2: #3A4A63;
+  --mute: #6B7A93;
+  --line: #E6EEF6;
+  --cloud: #F4F8FC;
+  --sky: #BFE3F2;
+  --aqua: #7CD2D6;
+  --teal: #2BB6B6;
+  --deep: #0F8C9C;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: "Poppins", system-ui, sans-serif; color: var(--ink); }
+.font-display { font-family: "Plus Jakarta Sans", "Poppins", system-ui, sans-serif; letter-spacing: -0.02em; }
+
+/* Fondo mesh (hero + testimonios) */
+.mesh {
+  background:
+    radial-gradient(120% 90% at 85% 8%, rgba(124,210,214,0.30), transparent 55%),
+    radial-gradient(90% 80% at 0% 30%, rgba(191,227,242,0.60), transparent 50%),
+    radial-gradient(120% 120% at 50% 120%, rgba(43,182,182,0.10), transparent 55%),
+    #F8FBFD;
+}
+
+/* Glassmorphism suave */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.80), rgba(255,255,255,0.55));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 24px 60px -28px rgba(15,77,118,0.28);
+}
+
+/* Sombras del sistema */
+.shadow-soft { box-shadow: 0 8px 28px -12px rgba(15,77,118,0.18); }
+.shadow-card { box-shadow: 0 24px 60px -28px rgba(15,77,118,0.28); }
+.shadow-glow { box-shadow: 0 30px 80px -30px rgba(43,182,182,0.45); }
+
+/* Focus ring accesible */
+.focus-ring:focus { outline: none; box-shadow: 0 0 0 4px rgba(43,182,182,0.25); border-color: var(--teal); }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal-stagger.in > * { opacity: 1; transform: none; }
+.reveal-stagger.in > *:nth-child(1) { transition-delay: .05s; }
+.reveal-stagger.in > *:nth-child(2) { transition-delay: .12s; }
+.reveal-stagger.in > *:nth-child(3) { transition-delay: .19s; }
+.reveal-stagger.in > *:nth-child(4) { transition-delay: .26s; }
+.reveal-stagger.in > *:nth-child(5) { transition-delay: .33s; }
+.reveal-stagger.in > *:nth-child(6) { transition-delay: .40s; }
+
+/* Float animation (tarjetas flotantes del hero) */
+@keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.floaty { animation: float-y 6s ease-in-out infinite; }
+
+/* Marquee acreditaciones */
+@keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: scroll-x 40s linear infinite; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Capa "antes" del slider: dientes apagados + amarillentos */
+.ba-before { filter: sepia(0.32) saturate(0.82) brightness(0.9) contrast(0.92); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-stagger > * { transition: none; opacity: 1; transform: none; }
+  .floaty, .marquee-track { animation: none; }
+  html { scroll-behavior: auto; }
+}

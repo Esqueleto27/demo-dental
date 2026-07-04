@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dental Smile — Clínica dental premium en Quito</title>
+<meta name="description" content="Atención dental profesional con tecnología de última generación en Quito. Reserva tu cita en segundos." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind Play CDN (solo para demo/referencia; en producción usar Tailwind compilado) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0B1F3A', ink2: '#3A4A63', mute: '#6B7A93', line: '#E6EEF6',
+          cloud: '#F4F8FC', sky: '#BFE3F2', aqua: '#7CD2D6', teal: '#2BB6B6', deep: '#0F8C9C',
+        },
+        fontFamily: {
+          sans: ['Poppins', 'system-ui', 'sans-serif'],
+          display: ['"Plus Jakarta Sans"', 'Poppins', 'system-ui', 'sans-serif'],
+        },
+        borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-white text-ink antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed inset-x-0 top-0 z-40 transition-all duration-300 pt-4">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div id="nav-bar" class="flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 border border-white/40 bg-white/40 backdrop-blur-md">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-teal to-deep text-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-2-2-5-2-6.5-.5C3.5 7 4 10 5 14c.6 2.4 1 5 2.3 5s1.2-3 2.7-3 1.4 3 2.7 3 1.4-2.6 2-5c1-4 1.5-7-.5-9-1.5-1.5-4.5-1.5-6.5.5"/></svg>
+        </span>
+        <span class="font-display font-extrabold text-ink text-lg">Dental Smile</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="#servicios" data-i18n="nav.services" class="px-3.5 py-2 text-sm font-medium text-ink2 rounded-full hover:bg-cloud transition">Servicios</a>
+        <a href="#clinica" data-i18n="nav.clinic" class="px-3.5 py-2 text-sm font-medium text-ink2 rounded-full hover:bg-cloud transition">Clínica</a>
+        <a href="#testimonios" data-i18n="nav.testimonials" class="px-3.5 py-2 text-sm font-medium text-ink2 rounded-full hover:bg-cloud transition">Testimonios</a>
+        <a href="#resultados" data-i18n="nav.results" class="px-3.5 py-2 text-sm font-medium text-ink2 rounded-full hover:bg-cloud transition">Resultados</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="tel:+593987654321" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-ink2 hover:text-ink px-3 py-2 rounded-full hover:bg-cloud transition">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2 1c1 2 3 4 5 5l1-2 5 2v4c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2z"/></svg>
+          +593 98 765 4321
+        </a>
+        <div id="lang-toggle" class="lang-toggle relative inline-flex items-center rounded-full border-2 border-teal/50 bg-white p-1 shadow-soft" role="group" aria-label="Selector de idioma / Language selector">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-1.5 text-mute shrink-0"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
+          <span id="lang-pill" class="absolute top-1 bottom-1 left-8 w-9 rounded-full bg-ink transition-all duration-300 ease-out"></span>
+          <button type="button" data-lang-btn="es" class="lang-btn relative z-10 w-9 py-1.5 rounded-full text-xs font-bold transition-colors">ES</button>
+          <button type="button" data-lang-btn="en" class="lang-btn relative z-10 w-9 py-1.5 rounded-full text-xs font-bold transition-colors">EN</button>
+        </div>
+        <a href="#contacto" data-i18n="nav.book" class="inline-flex items-center gap-2 rounded-full bg-ink text-white px-4 py-2.5 text-sm font-semibold hover:bg-deep transition shadow-soft">Reservar cita</a>
+        <button id="burger" class="lg:hidden grid place-items-center w-10 h-10 rounded-full hover:bg-cloud" data-i18n-aria="nav.menuAria" aria-label="Menú">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden mt-2 glass rounded-3xl p-4 flex flex-col gap-1">
+      <a href="#servicios" data-i18n="nav.services" class="px-4 py-3 rounded-2xl hover:bg-cloud font-medium">Servicios</a>
+      <a href="#clinica" data-i18n="nav.clinic" class="px-4 py-3 rounded-2xl hover:bg-cloud font-medium">Clínica</a>
+      <a href="#testimonios" data-i18n="nav.testimonials" class="px-4 py-3 rounded-2xl hover:bg-cloud font-medium">Testimonios</a>
+      <a href="#resultados" data-i18n="nav.results" class="px-4 py-3 rounded-2xl hover:bg-cloud font-medium">Resultados</a>
+      <a href="#contacto" data-i18n="nav.book" class="px-4 py-3 rounded-2xl bg-ink text-white font-semibold text-center mt-1">Reservar cita</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative pt-36 pb-16 lg:pt-44 lg:pb-24 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="pointer-events-none absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-aqua/30 blur-3xl"></div>
+  <div class="pointer-events-none absolute top-40 -left-40 w-[420px] h-[420px] rounded-full bg-sky/40 blur-3xl"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <div class="lg:col-span-6">
+      <h1 class="reveal font-display text-[44px] leading-[1.05] sm:text-6xl lg:text-[72px] font-extrabold text-ink">
+        <span data-i18n="hero.title1">Tu sonrisa</span><br/><span data-i18n="hero.title2">en las</span>
+        <span class="relative inline-block">
+          <span data-i18n="hero.title3" class="relative z-10 bg-gradient-to-r from-deep via-teal to-aqua bg-clip-text text-transparent">mejores manos</span>
+          <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 80 0, 220 14, 298 4" stroke="#2BB6B6" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        </span>
+      </h1>
+      <p class="reveal mt-6 text-lg text-ink2 max-w-xl leading-relaxed" data-i18n="hero.subtitle">
+        Atención dental profesional con tecnología de última generación. Diseñamos cada tratamiento a la medida de tu sonrisa, sin prisas y sin sorpresas.
+      </p>
+      <div class="reveal mt-8 flex flex-wrap items-center gap-3">
+        <a href="#contacto" class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-teal to-deep text-white px-6 py-4 text-base font-semibold shadow-glow hover:shadow-soft transition">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+          <span data-i18n="nav.book">Reservar cita</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#servicios" data-i18n="hero.ctaServices" class="inline-flex items-center gap-2 rounded-full bg-white text-ink px-6 py-4 text-base font-semibold border border-line hover:border-aqua transition">Ver servicios</a>
+      </div>
+      <div class="reveal mt-10 flex items-center gap-6">
+        <div class="flex -space-x-2">
+          <div class="w-9 h-9 rounded-full border-2 border-white shadow-soft" style="background:linear-gradient(135deg,#BFE3F2,#7CD2D6)"></div>
+          <div class="w-9 h-9 rounded-full border-2 border-white shadow-soft" style="background:linear-gradient(135deg,#7CD2D6,#2BB6B6)"></div>
+          <div class="w-9 h-9 rounded-full border-2 border-white shadow-soft" style="background:linear-gradient(135deg,#DCE9F4,#BFE3F2)"></div>
+          <div class="w-9 h-9 rounded-full border-2 border-white shadow-soft" style="background:linear-gradient(135deg,#0F8C9C,#2BB6B6)"></div>
+        </div>
+        <div>
+          <div class="flex items-center gap-1 text-teal" data-stars>
+            <span class="ml-0 text-sm font-semibold text-ink" style="margin-left:.5rem">4.9 / 5</span>
+          </div>
+          <div class="text-xs text-mute mt-0.5" data-i18n="hero.reviews">+1.200 reseñas verificadas en Google</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Composición hero -->
+    <div class="lg:col-span-6 relative">
+      <div class="reveal relative">
+        <div class="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-aqua/40 to-sky/40 blur-2xl"></div>
+        <div class="relative h-[420px] sm:h-[520px] rounded-[2.5rem] shadow-card overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1588776814546-daab30f310ce?fm=jpg&q=80&w=1400&auto=format&fit=crop" alt="Dentista atendiendo a una paciente en la clínica Dental Smile" class="w-full h-full object-cover" />
+        </div>
+        <div class="absolute -right-2 sm:-right-6 bottom-10 floaty" style="animation-delay:-2s">
+          <div class="glass rounded-2xl p-4 w-[210px]">
+            <div class="flex items-center gap-2">
+              <div class="w-9 h-9 rounded-full grid place-items-center bg-teal/15 text-teal">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <div>
+                <div class="text-xs text-mute" data-i18n="hero.badge.warranty">Garantía</div>
+                <div class="font-display font-bold text-ink leading-tight" data-i18n="hero.badge.warrantyDetail">5 años en implantes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -top-4 right-6 rounded-full bg-white px-4 py-2 shadow-soft border border-line text-xs font-semibold text-ink flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> <span data-i18n="hero.badge.financing">Financiación 0% disponible</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee de acreditaciones -->
+  <div class="relative mt-16 lg:mt-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="text-xs uppercase tracking-[0.25em] text-mute text-center mb-5" data-i18n="marquee.label">Acreditaciones y partners</div>
+    </div>
+    <div class="overflow-hidden no-scrollbar">
+      <div class="marquee-track flex gap-12 whitespace-nowrap text-ink2/60">
+        <div class="flex items-center gap-12 px-6">
+          <span class="font-display font-bold text-2xl">Invisalign®</span><span class="font-display font-bold text-2xl">Straumann</span><span class="font-display font-bold text-2xl">Nobel Biocare</span><span class="font-display font-bold text-2xl">Colegio Dentistas</span><span class="font-display font-bold text-2xl">ISO 9001</span><span class="font-display font-bold text-2xl">3Shape</span><span class="font-display font-bold text-2xl">SEPA</span><span class="font-display font-bold text-2xl">DentaQ</span>
+        </div>
+        <div class="flex items-center gap-12 px-6" aria-hidden="true">
+          <span class="font-display font-bold text-2xl">Invisalign®</span><span class="font-display font-bold text-2xl">Straumann</span><span class="font-display font-bold text-2xl">Nobel Biocare</span><span class="font-display font-bold text-2xl">Colegio Dentistas</span><span class="font-display font-bold text-2xl">ISO 9001</span><span class="font-display font-bold text-2xl">3Shape</span><span class="font-display font-bold text-2xl">SEPA</span><span class="font-display font-bold text-2xl">DentaQ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios" class="relative py-24 lg:py-32 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div class="max-w-2xl">
+        <div class="reveal text-xs uppercase tracking-[0.25em] text-teal font-semibold" data-i18n="services.eyebrow">Tratamientos</div>
+        <h2 class="reveal font-display mt-3 text-4xl sm:text-5xl font-extrabold text-ink leading-[1.05]" data-i18n="services.title">Todo lo que tu sonrisa necesita, en un solo lugar.</h2>
+      </div>
+      <p class="reveal text-ink2 max-w-md text-base leading-relaxed" data-i18n="services.subtitle">Cada tratamiento se planifica en digital y se ejecuta con materiales de primera. Sin sorpresas, con garantía.</p>
+    </div>
+
+    <div class="reveal-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Card 1 -->
+      <article class="group rounded-3xl p-7 bg-white border border-line hover:border-aqua hover:-translate-y-1 hover:shadow-card transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-cloud text-deep group-hover:bg-aqua/20 transition"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-2-2-5-2-6.5-.5C3.5 7 4 10 5 14c.6 2.4 1 5 2.3 5s1.2-3 2.7-3 1.4 3 2.7 3 1.4-2.6 2-5c1-4 1.5-7-.5-9-1.5-1.5-4.5-1.5-6.5.5"/></svg></div>
+        <h3 class="font-display text-2xl font-bold text-ink mt-5" data-i18n="services.card1.title">Limpieza dental</h3>
+        <p class="mt-2 text-sm text-ink2 leading-relaxed" data-i18n="services.card1.desc">Higiene profesional con ultrasonidos y pulido. Sin molestias, en una sola visita.</p>
+        <div class="mt-6 flex items-center justify-between"><span class="text-sm font-semibold text-deep" data-i18n="services.card1.tag">En una visita</span><span class="inline-flex items-center gap-1 text-sm font-semibold text-deep"><span data-i18n="services.learnMore">Saber más</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <!-- Card 2 -->
+      <article class="group rounded-3xl p-7 bg-white border border-line hover:border-aqua hover:-translate-y-1 hover:shadow-card transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-cloud text-deep group-hover:bg-aqua/20 transition"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="1.5"/><path d="M7 9v6M12 9v6M17 9v6"/></svg></div>
+        <h3 class="font-display text-2xl font-bold text-ink mt-5" data-i18n="services.card2.title">Ortodoncia</h3>
+        <p class="mt-2 text-sm text-ink2 leading-relaxed" data-i18n="services.card2.desc">Invisalign y brackets estéticos con plan de tratamiento visible desde el día uno.</p>
+        <div class="mt-6 flex items-center justify-between"><span class="text-sm font-semibold text-deep">Invisalign®</span><span class="inline-flex items-center gap-1 text-sm font-semibold text-deep"><span data-i18n="services.learnMore">Saber más</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <!-- Card 3 (destacada) -->
+      <article class="relative group rounded-3xl p-7 bg-ink text-white border border-ink transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-white/10 text-aqua"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v7"/><path d="M9 6h6"/><path d="M10 10c-1 3-1 8 2 11 3-3 3-8 2-11"/></svg></div>
+        <h3 class="font-display text-2xl font-bold mt-5" data-i18n="services.card3.title">Implantes</h3>
+        <p class="mt-2 text-sm text-white/75 leading-relaxed" data-i18n="services.card3.desc">Reemplazo permanente y natural, con planificación guiada por ordenador.</p>
+        <div class="mt-6 flex items-center justify-between"><span class="text-sm font-semibold text-aqua" data-i18n="services.card3.tag">Cirugía guiada</span><span class="inline-flex items-center gap-1 text-sm font-semibold text-aqua"><span data-i18n="services.learnMore">Saber más</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <div class="absolute top-6 right-6 rounded-full bg-aqua text-ink text-[10px] font-bold tracking-wider uppercase px-2 py-1" data-i18n="services.card3.badge">Más solicitado</div>
+      </article>
+      <!-- Card 4 -->
+      <article class="group rounded-3xl p-7 bg-white border border-line hover:border-aqua hover:-translate-y-1 hover:shadow-card transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-cloud text-deep group-hover:bg-aqua/20 transition"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><path d="M6.5 6.5l3 3M14.5 14.5l3 3M17.5 6.5l-3 3M9.5 14.5l-3 3"/></svg></div>
+        <h3 class="font-display text-2xl font-bold text-ink mt-5" data-i18n="services.card4.title">Blanqueamiento</h3>
+        <p class="mt-2 text-sm text-ink2 leading-relaxed" data-i18n="services.card4.desc">Varios tonos más en una sesión, con protocolo LED seguro para el esmalte.</p>
+        <div class="mt-6 flex items-center justify-between"><span class="text-sm font-semibold text-deep" data-i18n="services.card4.tag">45 minutos</span><span class="inline-flex items-center gap-1 text-sm font-semibold text-deep"><span data-i18n="services.learnMore">Saber más</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <!-- Card 5 -->
+      <article class="group rounded-3xl p-7 bg-white border border-line hover:border-aqua hover:-translate-y-1 hover:shadow-card transition-all">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center bg-cloud text-deep group-hover:bg-aqua/20 transition"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+        <h3 class="font-display text-2xl font-bold text-ink mt-5" data-i18n="services.card5.title">Diseño de sonrisa</h3>
+        <p class="mt-2 text-sm text-ink2 leading-relaxed" data-i18n="services.card5.desc">Planificación digital a medida: previsualiza tu nueva sonrisa antes de empezar.</p>
+        <div class="mt-6 flex items-center justify-between"><span class="text-sm font-semibold text-deep" data-i18n="services.card5.tag">Preview 3D</span><span class="inline-flex items-center gap-1 text-sm font-semibold text-deep"><span data-i18n="services.learnMore">Saber más</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </article>
+      <!-- CTA tile -->
+      <article class="rounded-3xl p-7 bg-gradient-to-br from-aqua/30 via-sky/30 to-white border border-aqua/30 flex flex-col justify-between min-h-[220px]">
+        <div>
+          <div class="w-14 h-14 rounded-2xl grid place-items-center bg-white shadow-soft text-deep mb-6"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+          <h3 class="font-display text-2xl font-bold text-ink" data-i18n="services.cta.title">¿No sabes qué tratamiento elegir?</h3>
+          <p class="mt-2 text-sm text-ink2 leading-relaxed" data-i18n="services.cta.desc">Reserva una primera visita de diagnóstico gratuita con uno de nuestros especialistas.</p>
+        </div>
+        <a href="#contacto" class="mt-6 inline-flex items-center gap-2 rounded-full bg-ink text-white px-5 py-3 text-sm font-semibold w-fit hover:bg-deep transition"><span data-i18n="services.cta.button">Diagnóstico gratuito</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE LA CLÍNICA ============ -->
+<section id="clinica" class="relative py-24 lg:py-32 bg-gradient-to-b from-cloud to-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 grid lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-5">
+      <div class="reveal relative">
+        <div class="h-[460px] rounded-[2rem] shadow-card overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1643916800611-1302e8d27c38?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Instalaciones y tecnología de la clínica Dental Smile" class="w-full h-full object-cover" />
+        </div>
+        <div class="absolute -bottom-6 -right-4 sm:-right-8 glass rounded-2xl p-4 w-[230px]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-teal/15 grid place-items-center text-teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div><div class="font-display font-bold text-ink leading-tight" data-i18n="clinic.badge.tech">Tecnología 3D</div><div class="text-xs text-mute" data-i18n="clinic.badge.scanner">Escáner intraoral iTero®</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <div class="reveal text-xs uppercase tracking-[0.25em] text-teal font-semibold" data-i18n="clinic.eyebrow">Sobre la clínica</div>
+      <h2 class="reveal font-display mt-3 text-4xl sm:text-5xl font-extrabold text-ink leading-[1.05]" data-i18n="clinic.title">Una década cuidando sonrisas con criterio y tecnología.</h2>
+      <p class="reveal mt-6 text-ink2 text-lg leading-relaxed max-w-2xl" data-i18n="clinic.desc">En Dental Smile combinamos un equipo multidisciplinar con las herramientas digitales más avanzadas — escáner intraoral, planificación 3D y CAD/CAM en clínica — para que cada tratamiento sea predecible, mínimamente invasivo y a tu medida.</p>
+      <div class="reveal-stagger mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-white border border-line p-6 shadow-soft"><div class="font-display text-4xl font-extrabold text-ink">+10</div><div class="mt-1 text-sm text-mute" data-i18n="clinic.stat1">años de experiencia</div></div>
+        <div class="rounded-2xl bg-white border border-line p-6 shadow-soft"><div class="font-display text-4xl font-extrabold text-ink">+5.000</div><div class="mt-1 text-sm text-mute" data-i18n="clinic.stat2">pacientes felices</div></div>
+        <div class="rounded-2xl bg-white border border-line p-6 shadow-soft"><div class="font-display text-4xl font-extrabold text-ink">1:1</div><div class="mt-1 text-sm text-mute" data-i18n="clinic.stat3">atención personalizada</div></div>
+      </div>
+      <ul class="reveal mt-8 grid sm:grid-cols-2 gap-3 max-w-xl">
+        <li class="flex items-start gap-3 text-ink2"><span class="mt-0.5 w-5 h-5 rounded-full bg-teal/15 grid place-items-center text-teal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="text-sm leading-snug" data-i18n="clinic.list1">Diagnóstico digital 3D sin radiación adicional</span></li>
+        <li class="flex items-start gap-3 text-ink2"><span class="mt-0.5 w-5 h-5 rounded-full bg-teal/15 grid place-items-center text-teal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="text-sm leading-snug" data-i18n="clinic.list2">Equipo multidisciplinar en un solo centro</span></li>
+        <li class="flex items-start gap-3 text-ink2"><span class="mt-0.5 w-5 h-5 rounded-full bg-teal/15 grid place-items-center text-teal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="text-sm leading-snug" data-i18n="clinic.list3">Materiales con trazabilidad y garantía</span></li>
+        <li class="flex items-start gap-3 text-ink2"><span class="mt-0.5 w-5 h-5 rounded-full bg-teal/15 grid place-items-center text-teal"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span class="text-sm leading-snug" data-i18n="clinic.list4">Financiación a medida sin intereses</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section id="testimonios" class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 mesh"></div>
+  <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-aqua/20 blur-3xl rounded-full"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="reveal text-xs uppercase tracking-[0.25em] text-teal font-semibold" data-i18n="testimonials.eyebrow">Testimonios</div>
+      <h2 class="reveal font-display mt-3 text-4xl sm:text-5xl font-extrabold text-ink leading-[1.05]" data-i18n="testimonials.title">Pacientes que hoy sonríen sin pensarlo.</h2>
+    </div>
+    <div class="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
+      <figure class="glass rounded-3xl p-7 flex flex-col">
+        <div class="flex items-center justify-between"><div class="flex items-center gap-1 text-teal" data-stars-sm></div></div>
+        <blockquote class="mt-5 text-ink leading-relaxed text-[15px] flex-1" data-i18n="testimonials.quote1">"Después de años evitando sonreír en fotos, hoy lo hago sin pensarlo. El equipo me explicó cada paso del tratamiento con simulación 3D y la diferencia ha sido enorme."</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-white/60"><div class="w-11 h-11 rounded-full grid place-items-center font-display font-bold text-white bg-gradient-to-br from-teal to-deep">LH</div><div><div class="font-semibold text-ink leading-tight">Lucía Hernández</div><div class="text-xs text-mute" data-i18n="testimonials.role1">Paciente · Ortodoncia Invisalign</div></div></figcaption>
+      </figure>
+      <figure class="glass rounded-3xl p-7 flex flex-col">
+        <div class="flex items-center justify-between"><div class="flex items-center gap-1 text-teal" data-stars-sm></div></div>
+        <blockquote class="mt-5 text-ink leading-relaxed text-[15px] flex-1" data-i18n="testimonials.quote2">"Tenía miedo a los implantes y resultó ser lo más sencillo del mundo. Atención impecable, sin dolor y con un seguimiento que da tranquilidad."</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-white/60"><div class="w-11 h-11 rounded-full grid place-items-center font-display font-bold text-white bg-gradient-to-br from-teal to-deep">MA</div><div><div class="font-semibold text-ink leading-tight">Marcos Aguilar</div><div class="text-xs text-mute" data-i18n="testimonials.role2">Paciente · 2 implantes</div></div></figcaption>
+      </figure>
+      <figure class="glass rounded-3xl p-7 flex flex-col">
+        <div class="flex items-center justify-between"><div class="flex items-center gap-1 text-teal" data-stars-sm></div></div>
+        <blockquote class="mt-5 text-ink leading-relaxed text-[15px] flex-1" data-i18n="testimonials.quote3">"Lo mejor fue ver mi nueva sonrisa antes de empezar. Cuidaron cada detalle: el color, la forma, la proporción. Vale cada dólar."</blockquote>
+        <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-white/60"><div class="w-11 h-11 rounded-full grid place-items-center font-display font-bold text-white bg-gradient-to-br from-teal to-deep">CR</div><div><div class="font-semibold text-ink leading-tight">Carmen Ruiz</div><div class="text-xs text-mute" data-i18n="testimonials.role3">Paciente · Diseño de sonrisa</div></div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ANTES / DESPUÉS ============ -->
+<section id="resultados" class="relative py-24 lg:py-32 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+      <div class="max-w-2xl">
+        <div class="reveal text-xs uppercase tracking-[0.25em] text-teal font-semibold" data-i18n="results.eyebrow">Antes &amp; Después</div>
+        <h2 class="reveal font-display mt-3 text-4xl sm:text-5xl font-extrabold text-ink leading-[1.05]"><span data-i18n="results.title1">Resultados reales,</span><br/><span class="text-deep" data-i18n="results.title2">contados en imágenes.</span></h2>
+      </div>
+      <p class="reveal text-ink2 max-w-md text-base leading-relaxed" data-i18n="results.subtitle">Desliza sobre cada caso para descubrir la transformación. Casos reales de pacientes Dental Smile, publicados con su consentimiento.</p>
+    </div>
+    <div id="gallery" class="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL / CONTACTO ============ -->
+<section id="contacto" class="relative py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="reveal relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-ink via-deep to-teal text-white p-8 sm:p-16 shadow-card">
+      <div class="absolute -top-32 -right-20 w-[480px] h-[480px] rounded-full bg-aqua/30 blur-3xl"></div>
+      <div class="absolute -bottom-32 -left-10 w-[380px] h-[380px] rounded-full bg-sky/20 blur-3xl"></div>
+      <div class="relative grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7">
+          <div class="text-xs uppercase tracking-[0.25em] text-aqua font-semibold" data-i18n="contact.eyebrow">Empieza hoy</div>
+          <h2 class="font-display mt-3 text-4xl sm:text-6xl font-extrabold leading-[1.02]"><span data-i18n="contact.title1">Agenda tu cita hoy</span><br/><span class="text-aqua" data-i18n="contact.title2">y comienza a sonreír.</span></h2>
+          <p class="mt-5 text-white/80 text-lg max-w-xl" data-i18n="contact.subtitle">Primera visita gratuita: diagnóstico, plan personalizado y presupuesto cerrado en menos de 45 minutos.</p>
+          <div class="mt-8 flex flex-wrap gap-6 text-sm">
+            <span class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CD2D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> <span data-i18n="contact.chip1">Sin compromiso</span></span>
+            <span class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CD2D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> <span data-i18n="contact.chip2">Financiación 0%</span></span>
+            <span class="flex items-center gap-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7CD2D6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> <span data-i18n="contact.chip3">Respuesta en 1h</span></span>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div id="booking-card" class="rounded-3xl bg-white text-ink p-6 shadow-card">
+            <form id="booking-form">
+              <div class="text-sm font-semibold text-deep" data-i18n="form.eyebrow">Reserva en 30 segundos</div>
+              <h3 class="font-display text-xl font-bold mt-1" data-i18n="form.title">Cuéntanos qué necesitas</h3>
+              <div class="mt-5 space-y-3">
+                <div>
+                  <label class="text-xs font-semibold text-ink2" data-i18n="form.name">Nombre</label>
+                  <input required class="mt-1 w-full rounded-xl border border-line bg-cloud px-4 py-3 text-sm focus-ring" data-i18n-placeholder="form.namePlaceholder" placeholder="Tu nombre" />
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div><label class="text-xs font-semibold text-ink2" data-i18n="form.phone">Teléfono</label><input required class="mt-1 w-full rounded-xl border border-line bg-cloud px-4 py-3 text-sm focus-ring" placeholder="099 000 0000" /></div>
+                  <div><label class="text-xs font-semibold text-ink2">Email</label><input type="email" class="mt-1 w-full rounded-xl border border-line bg-cloud px-4 py-3 text-sm focus-ring" placeholder="tu@email.com" /></div>
+                </div>
+                <div>
+                  <label class="text-xs font-semibold text-ink2" data-i18n="form.treatment">Tratamiento</label>
+                  <select class="mt-1 w-full rounded-xl border border-line bg-cloud px-4 py-3 text-sm focus-ring">
+                    <option data-i18n="form.option1">Primera visita / revisión</option>
+                    <option data-i18n="form.option2">Ortodoncia (Invisalign)</option>
+                    <option data-i18n="form.option3">Implante dental</option>
+                    <option data-i18n="form.option4">Blanqueamiento</option>
+                    <option data-i18n="form.option5">Diseño de sonrisa</option>
+                  </select>
+                </div>
+                <button type="submit" class="mt-2 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-ink hover:bg-deep text-white px-5 py-3.5 text-sm font-semibold transition"><span data-i18n="form.submit">Solicitar cita</span> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                <p class="text-[11px] text-mute text-center" data-i18n="form.privacy">Al continuar aceptas nuestra política de privacidad.</p>
+              </div>
+            </form>
+            <div id="booking-confirm" class="hidden py-10 text-center">
+              <div class="mx-auto grid place-items-center w-16 h-16 rounded-full bg-teal/12 text-teal"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+              <h3 class="font-display text-2xl font-bold mt-5" data-i18n="confirm.title">¡Cita confirmada!</h3>
+              <p class="text-sm text-ink2 mt-2 max-w-xs mx-auto" data-i18n="confirm.desc">Hemos recibido tu solicitud. Te llamamos en menos de una hora para confirmar el horario.</p>
+              <button id="booking-reset" type="button" class="mt-6 inline-flex items-center gap-2 rounded-xl border border-line px-5 py-3 text-sm font-semibold text-ink hover:bg-cloud transition" data-i18n="confirm.reset">Enviar otra solicitud</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-white/80 pt-20 pb-10 relative overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[200px] bg-teal/20 blur-3xl rounded-full"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-2"><span class="grid place-items-center w-9 h-9 rounded-full bg-gradient-to-br from-teal to-aqua text-ink"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-2-2-5-2-6.5-.5C3.5 7 4 10 5 14c.6 2.4 1 5 2.3 5s1.2-3 2.7-3 1.4 3 2.7 3 1.4-2.6 2-5c1-4 1.5-7-.5-9-1.5-1.5-4.5-1.5-6.5.5"/></svg></span><span class="font-display font-extrabold text-white text-lg">Dental Smile</span></div>
+        <p class="mt-4 text-sm text-white/70 max-w-xs leading-relaxed" data-i18n="footer.tagline">Clínica dental premium. Tecnología, criterio y trato humano para cuidar tu sonrisa de por vida.</p>
+        <div class="mt-6 flex items-center gap-2">
+          <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full grid place-items-center bg-white/5 hover:bg-teal hover:text-ink transition border border-white/10"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full grid place-items-center bg-white/5 hover:bg-teal hover:text-ink transition border border-white/10"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v6h3v-6H16l.5-3h-3V9.5c0-.3.2-.5.5-.5z"/></svg></a>
+          <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full grid place-items-center bg-white/5 hover:bg-teal hover:text-ink transition border border-white/10"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 4c.3 2 1.7 3.5 3.6 3.8V11c-1.3 0-2.6-.4-3.6-1.1V15a5 5 0 1 1-5-5v3a2 2 0 1 0 2 2V4h3z"/></svg></a>
+          <a href="#" aria-label="WhatsApp" class="w-10 h-10 rounded-full grid place-items-center bg-white/5 hover:bg-teal hover:text-ink transition border border-white/10"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2 1c1 2 3 4 5 5l1-2 5 2v4c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2z"/></svg></a>
+        </div>
+      </div>
+      <div class="lg:col-span-3">
+        <div class="text-xs uppercase tracking-[0.2em] text-aqua font-semibold mb-4" data-i18n="footer.contactHeading">Contacto</div>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-3"><svg width="16" height="16" class="mt-0.5 text-aqua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Av. Naciones Unidas y Amazonas, Quito</li>
+          <li class="flex items-start gap-3"><svg width="16" height="16" class="mt-0.5 text-aqua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2 1c1 2 3 4 5 5l1-2 5 2v4c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2z"/></svg> +593 98 765 4321</li>
+          <li class="flex items-start gap-3"><svg width="16" height="16" class="mt-0.5 text-aqua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2 1c1 2 3 4 5 5l1-2 5 2v4c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2z"/></svg> <span data-i18n="footer.whatsapp">WhatsApp 24/7</span></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-3">
+        <div class="text-xs uppercase tracking-[0.2em] text-aqua font-semibold mb-4" data-i18n="footer.scheduleHeading">Horarios</div>
+        <ul class="space-y-2 text-sm">
+          <li class="flex justify-between"><span data-i18n="footer.mondayFriday">Lunes – Viernes</span><span class="text-white">9:00 – 21:00</span></li>
+          <li class="flex justify-between"><span data-i18n="footer.saturday">Sábado</span><span class="text-white">10:00 – 14:00</span></li>
+          <li class="flex justify-between"><span data-i18n="footer.sunday">Domingo</span><span class="text-white/40" data-i18n="footer.closed">Cerrado</span></li>
+          <li class="pt-2 flex items-center gap-2 text-aqua"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span data-i18n="footer.emergency">Urgencias 24h disponibles</span></li>
+        </ul>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="text-xs uppercase tracking-[0.2em] text-aqua font-semibold mb-4" data-i18n="footer.clinicHeading">Clínica</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#servicios" class="hover:text-white" data-i18n="nav.services">Servicios</a></li>
+          <li><a href="#clinica" class="hover:text-white" data-i18n="footer.aboutUs">Sobre nosotros</a></li>
+          <li><a href="#testimonios" class="hover:text-white" data-i18n="nav.testimonials">Testimonios</a></li>
+          <li><a href="#resultados" class="hover:text-white" data-i18n="nav.results">Resultados</a></li>
+          <li><a href="#contacto" class="hover:text-white" data-i18n="footer.bookLink">Reservar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+      <div data-i18n="footer.copy">© 2026 Dental Smile · Todos los derechos reservados</div>
+      <div class="flex gap-5"><a href="#" class="hover:text-white" data-i18n="footer.legal">Aviso legal</a><a href="#" class="hover:text-white" data-i18n="footer.privacy">Privacidad</a><a href="#" class="hover:text-white" data-i18n="footer.cookies">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="gallery.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
